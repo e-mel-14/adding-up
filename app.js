@@ -38,12 +38,12 @@ rl.on('close', () => {
     }
 
     const rankingArray = Array.from(prefectureDataMap).sort((pair1, pair2) => {
-        return pair2[1].change - pair1[1].change; // bcs 2015 is bigger than 2010
+        return pair1[1].change - pair2[1].change; // bcs 2015 is bigger than 2010
         // wanna result positive number 
         });
 
-    const rankingString = rankingArray.map(([key, value]) => {
-        return key + ': ' + value.popu10 + '=>' + value.popu15 + ' 変化率:' + value.change;
+    const rankingString = rankingArray.map(([key, value], i) => {
+        return (i+1) + '位' + key + ': ' + value.popu10 + '=>' + value.popu15 + ' 変化率:' + value.change;
     });    
 
     console.log(rankingString);
